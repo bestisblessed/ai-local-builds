@@ -1,0 +1,71 @@
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/mma-ai-model-6-mlx-improved % ./run.sh
+Length of fighter_df: 2646
+Length of event_df: 8131
+Dropping rows with missing values
+Length of fighter_df: 2643
+Length of event_df: 6480
+Columns after merging:
+Index(['Event Name', 'Event Location', 'Event Date', 'Fighter 1', 'Fighter 2',
+       'Fighter 1 ID', 'Fighter 2 ID', 'Weight Class', 'Winning Fighter',
+       'Winning Method', 'Winning Round', 'Winning Time', 'Referee',
+       'Fight Type', 'Fighter', 'Nickname', 'Birth Date', 'Nationality',
+       'Hometown', 'Association', 'Weight Class_fighter1', 'Height', 'Wins',
+       'Losses', 'Win_Decision', 'Win_KO', 'Win_Sub', 'Loss_Decision',
+       'Loss_KO', 'Loss_Sub', 'Fighter_ID', 'Fighter_fighter2',
+       'Nickname_fighter2', 'Birth Date_fighter2', 'Nationality_fighter2',
+       'Hometown_fighter2', 'Association_fighter2', 'Weight Class_fighter2',
+       'Height_fighter2', 'Wins_fighter2', 'Losses_fighter2',
+       'Win_Decision_fighter2', 'Win_KO_fighter2', 'Win_Sub_fighter2',
+       'Loss_Decision_fighter2', 'Loss_KO_fighter2', 'Loss_Sub_fighter2',
+       'Fighter_ID_fighter2'],
+      dtype='object')
+Length of merged dataset: 6471
+Dropping rows with missing values
+Length of merged dataset: 6453
+data/train.jsonl data/valid.jsonl data/test.jsonl
+import error: No module named 'triton'
+Loading pretrained model
+Fetching 7 files: 100%|███████████████████████████████████████████████████████████| 7/7 [00:00<00:00, 118866.91it/s]
+Loading datasets
+Training
+Trainable parameters: 0.042% (3.408M/8030.261M)
+Starting training..., iters: 300
+Iter 1: Val loss 2.006, Val took 46.906s
+Iter 10: Train loss 1.757, Learning Rate 1.000e-05, It/sec 0.185, Tokens/sec 117.232, Trained Tokens 6336, Peak mem 18.115 GB
+Iter 20: Train loss 1.285, Learning Rate 1.000e-05, It/sec 0.220, Tokens/sec 126.692, Trained Tokens 12106, Peak mem 18.115 GB
+Iter 30: Train loss 0.915, Learning Rate 1.000e-05, It/sec 0.201, Tokens/sec 118.608, Trained Tokens 18001, Peak mem 18.115 GB
+Iter 40: Train loss 0.769, Learning Rate 1.000e-05, It/sec 0.200, Tokens/sec 119.202, Trained Tokens 23969, Peak mem 18.115 GB
+Iter 50: Train loss 0.753, Learning Rate 1.000e-05, It/sec 0.229, Tokens/sec 129.400, Trained Tokens 29628, Peak mem 18.115 GB
+Iter 60: Train loss 0.712, Learning Rate 1.000e-05, It/sec 0.222, Tokens/sec 129.019, Trained Tokens 35440, Peak mem 18.115 GB
+Iter 70: Train loss 0.744, Learning Rate 1.000e-05, It/sec 0.221, Tokens/sec 128.850, Trained Tokens 41262, Peak mem 18.115 GB
+Iter 80: Train loss 0.707, Learning Rate 1.000e-05, It/sec 0.235, Tokens/sec 126.011, Trained Tokens 46613, Peak mem 18.115 GB
+Iter 90: Train loss 0.660, Learning Rate 1.000e-05, It/sec 0.236, Tokens/sec 130.576, Trained Tokens 52145, Peak mem 18.115 GB
+Iter 100: Train loss 0.675, Learning Rate 1.000e-05, It/sec 0.210, Tokens/sec 126.950, Trained Tokens 58197, Peak mem 18.165 GB
+Iter 100: Saved adapter weights to adapters/adapters.safetensors and adapters/0000100_adapters.safetensors.
+Iter 110: Train loss 0.618, Learning Rate 1.000e-05, It/sec 0.208, Tokens/sec 124.836, Trained Tokens 64195, Peak mem 18.165 GB
+Iter 120: Train loss 0.661, Learning Rate 1.000e-05, It/sec 0.220, Tokens/sec 128.009, Trained Tokens 70003, Peak mem 18.165 GB
+Iter 130: Train loss 0.625, Learning Rate 1.000e-05, It/sec 0.188, Tokens/sec 121.189, Trained Tokens 76435, Peak mem 18.179 GB
+Iter 140: Train loss 0.677, Learning Rate 1.000e-05, It/sec 0.207, Tokens/sec 123.688, Trained Tokens 82417, Peak mem 18.179 GB
+Iter 150: Train loss 0.691, Learning Rate 1.000e-05, It/sec 0.215, Tokens/sec 129.266, Trained Tokens 88433, Peak mem 18.179 GB
+Iter 160: Train loss 0.598, Learning Rate 1.000e-05, It/sec 0.209, Tokens/sec 127.647, Trained Tokens 94531, Peak mem 18.179 GB
+Iter 170: Train loss 0.644, Learning Rate 1.000e-05, It/sec 0.205, Tokens/sec 125.755, Trained Tokens 100672, Peak mem 18.179 GB
+Iter 180: Train loss 0.622, Learning Rate 1.000e-05, It/sec 0.219, Tokens/sec 129.946, Trained Tokens 106616, Peak mem 18.179 GB
+Iter 190: Train loss 0.628, Learning Rate 1.000e-05, It/sec 0.213, Tokens/sec 126.379, Trained Tokens 112560, Peak mem 18.179 GB
+Iter 200: Val loss 0.645, Val took 42.988s
+Iter 200: Train loss 0.614, Learning Rate 1.000e-05, It/sec 2.125, Tokens/sec 1272.412, Trained Tokens 118547, Peak mem 18.249 GB
+Iter 200: Saved adapter weights to adapters/adapters.safetensors and adapters/0000200_adapters.safetensors.
+Iter 210: Train loss 0.604, Learning Rate 1.000e-05, It/sec 0.214, Tokens/sec 126.982, Trained Tokens 124469, Peak mem 18.249 GB
+Iter 220: Train loss 0.604, Learning Rate 1.000e-05, It/sec 0.220, Tokens/sec 127.512, Trained Tokens 130274, Peak mem 18.249 GB
+Iter 230: Train loss 0.604, Learning Rate 1.000e-05, It/sec 0.202, Tokens/sec 124.621, Trained Tokens 136440, Peak mem 18.249 GB
+Iter 240: Train loss 0.570, Learning Rate 1.000e-05, It/sec 0.204, Tokens/sec 122.860, Trained Tokens 142460, Peak mem 18.249 GB
+Iter 250: Train loss 0.607, Learning Rate 1.000e-05, It/sec 0.214, Tokens/sec 124.101, Trained Tokens 148263, Peak mem 18.249 GB
+Iter 260: Train loss 0.608, Learning Rate 1.000e-05, It/sec 0.213, Tokens/sec 129.641, Trained Tokens 154346, Peak mem 18.249 GB
+Iter 270: Train loss 0.613, Learning Rate 1.000e-05, It/sec 0.215, Tokens/sec 126.310, Trained Tokens 160233, Peak mem 18.249 GB
+Iter 280: Train loss 0.617, Learning Rate 1.000e-05, It/sec 0.218, Tokens/sec 124.085, Trained Tokens 165921, Peak mem 18.249 GB
+Iter 290: Train loss 0.599, Learning Rate 1.000e-05, It/sec 0.217, Tokens/sec 124.711, Trained Tokens 171672, Peak mem 18.249 GB
+Iter 300: Val loss 0.575, Val took 45.392s
+Iter 300: Train loss 0.580, Learning Rate 1.000e-05, It/sec 1.872, Tokens/sec 1136.237, Trained Tokens 177741, Peak mem 18.249 GB
+Iter 300: Saved adapter weights to adapters/adapters.safetensors and adapters/0000300_adapters.safetensors.
+Saved final weights to adapters/adapters.safetensors.
+Now run 'ollama create bestisblessed/<new-model-name>'
+
