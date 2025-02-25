@@ -1,0 +1,35 @@
+✅ Inserted 2142 / 2163 documents
+✅ Inserted 2144 / 2163 documents
+✅ Inserted 2146 / 2163 documents
+✅ Inserted 2148 / 2163 documents
+✅ Inserted 2150 / 2163 documents
+✅ Inserted 2152 / 2163 documents
+✅ Inserted 2154 / 2163 documents
+✅ Inserted 2156 / 2163 documents
+✅ Inserted 2158 / 2163 documents
+✅ Inserted 2160 / 2163 documents
+✅ Inserted 2162 / 2163 documents
+✅ Inserted 2164 / 2163 documents
+/Users/td/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai/embed.py:53: LangChainDeprecationWarning: Since Chroma 0.4.x the manual persistence method is no longer supported as docs are automatically persisted.
+  vectorstore.persist()
+
+✅ ChromaDB successfully populated and persisted to disk!
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai % vi embed.py
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai %
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai %
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai % mv embed.py fine-tune.py
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai % vi question.py
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai %
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai %
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai % mv question.py query.py
+td@MyM4Pro ~/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai % python query.py
+import error: No module named 'triton'
+/Users/td/Code/ai-local-builds/fine-tuning/RAG-langchain-final-mma-ai/query.py:14: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-chroma package and should be used instead. To use it run `pip install -U :class:`~langchain-chroma` and import as `from :class:`~langchain_chroma import Chroma``.
+  vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embeddings, client=chroma_client)
+✅ ChromaDB successfully loaded!
+Query: Jon Jones method of victories
+/AppleInternal/Library/BuildRoots/79d43cf9-ebfd-11ef-8231-fe9e33ca05fa/Library/Caches/com.apple.xbs/Sources/MetalPerformanceShadersGraph/mpsgraph/MetalPerformanceShadersGraph/Core/Files/MPSGraphExecutable.mm:3532: failed assertion `Error: MLIR pass manager failed'
+zsh: abort      python query.py
+/Users/td/.pyenv/versions/3.12.0/lib/python3.12/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+
