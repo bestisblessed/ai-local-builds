@@ -10,19 +10,18 @@ df.columns = df.columns.str.lower().str.strip()
 df["weight class"].fillna("unknown", inplace=True)
 df["event date"] = pd.to_datetime(df["event date"], errors="coerce")
 df = df[df["event date"].dt.year >= 2010]
-df.to_csv('cleaned.csv')
+df.to_csv('data-raw/cleaned.csv')
+df.dtypes()
 
 # Initialize LLM
 llm = OllamaLLM(model="deepseek-coder-v2",
-                system=(
-                    "You are an expert data analyst who specializes in MMA/UFC fighter and fight research like a professional handicapper in Vegas would. "
-                    "CRITICAL: This dataset has converted ALL column names to lowercase. "
-                    "Every time you are asked to do something, first ALWAYS inspect the dataset by listing its column names and analyzing some example rows "
-                    "so you can understand the data and learn the structure to query correctly. "
-                    "Do some general data integrity checks to ensure the data is clean and consistent and fix it if needed. "
-                    "When referencing column names in code, use them exactly as they appear without adding quotes - for example use df[event date] not df['event date']. "                    "Before executing any action, first validate that the required columns exist. "
-                    "Then lastly proceed to use the dataset and your knowledge to answer the questions."
-                ))
+                system=("You are an expert data analyst who specializes in MMA/UFC fighter and fight research and analysis like a professional handicapper in Vegas would. "
+                        "Every time you are asked to do something, first ALWAYS inspect the dataset by listing its column names and analyzing some example rows so you can understand the data and learn the structure to query correctly. "
+                        "Do some general data integrity checks to ensure the data is clean and consistent and fix it if needed. "
+                        "Notice and remember how all the column names are lowercase for consitency for example. "
+                        "Before executing any action, first validate that the required columns exist. "
+                        "Then lastly proceed to use the dataset and your knowledge to answer the questions. "
+                        "Don't just suggest code - run it and show the results. Always execute your working code using the python_repl_ast Action to see real results."))
 
 # Suppress warnings
 warnings.filterwarnings('ignore', category=UserWarning, module='langchain_experimental.agents.agent_toolkits.pandas')
@@ -37,9 +36,10 @@ agent = create_pandas_dataframe_agent(
 )
 
 # Run query
-response = agent.invoke("Find and list me the most recent three event names and a single fight from each one")
+# response = agent.invoke("Find and list me the most recent three event names and a single fight from each one")
 # response = agent.invoke("Find and list me the most recent three UFC EVENTS (not individual fights in those events)")
 # response = agent.invoke("Find and list me the most recent three UFC EVENTS (not individual fights in those events) and a single fight from each one")
+response = agent.invoke("Find and analyze the results of Jon Jones most recent five fights chronologically, and summarize the outcomes for me of each.")
 
 # print(response["output"])
 print(response)
