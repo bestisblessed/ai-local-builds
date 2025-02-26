@@ -24,18 +24,27 @@ df.columns = df.columns.str.lower().str.strip()
 df["weight class"].fillna("unknown", inplace=True)
 df["event date"] = pd.to_datetime(df["event date"], errors="coerce")
 df = df[df["event date"].dt.year >= 2010]
-df.to_csv('data-raw/cleaned.csv')
-df.dtypes()
+df.to_csv('cleaned.csv')
+print(df.dtypes)
 
 # Initialize LLM
 llm = OllamaLLM(model="deepseek-coder-v2",
-                system=("You are an expert data analyst who specializes in MMA/UFC fighter and fight research and analysis like a professional handicapper in Vegas would. "
-                        "Every time you are asked to do something, first ALWAYS inspect the dataset by listing its column names and analyzing some example rows so you can understand the data and learn the structure to query correctly. "
-                        "Do some general data integrity checks to ensure the data is clean and consistent and fix it if needed. "
-                        "Notice and remember how all the column names are lowercase for consitency for example. "
-                        "Before executing any action, first validate that the required columns exist. "
-                        "Then lastly proceed to use the dataset and your knowledge to answer the questions. "
-                        "Don't just suggest code - run it and show the results. Always execute your working code using the python_repl_ast Action to see real results."))
+                system=("You are an expert data analyst who specializes in MMA/UFC fighter and fight research and analysis like a professional handicapper in Vegas would.\n"
+                        "Every time you are asked to do something, first ALWAYS inspect the dataset by listing its column names and analyzing some example rows so you can understand the data and learn the structure to query correctly.\n"
+                        "Do some general data integrity checks to ensure the data is clean and consistent and fix it if needed.\n"
+                        # "Notice and remember how all the column names are lowercase for consitency for example. "
+                        # "Before executing any action, first validate that the required columns exist. "
+                        # "Then lastly proceed to use the dataset and your knowledge to answer the questions. "
+                        # "Don't just suggest code - run it and show the results. Always execute your working code using the python_repl_ast Action to see real results."
+                        "When analyzing data:\n"
+                        "1. Use python_repl_ast to execute code\n"
+                        "2. ALWAYS format your responses as:\n"
+                        "Thought: your reasoning\n"
+                        "Action: python_repl_ast\n"
+                        "Action Input: your code\n"
+                        "3. Keep all string comparisons lowercase (e.g., df[df['fighter 1'] == 'jon jones'])\n"
+                        "4. Never wrap code in markdown blocks or add explanations within the Action Input"
+                    ))     
 
 # Suppress warnings
 warnings.filterwarnings('ignore', category=UserWarning, module='langchain_experimental.agents.agent_toolkits.pandas')
